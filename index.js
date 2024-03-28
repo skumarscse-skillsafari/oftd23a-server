@@ -8,9 +8,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 const DB_CONNECTION_URL = process.env.DB_CONNECTION_URL;
-
-app.use(express.json({ limit: "5mb" }));
 app.use(cors());
+app.use(express.json({ limit: "5mb" }));
+
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.get("/", (req, res) => {
