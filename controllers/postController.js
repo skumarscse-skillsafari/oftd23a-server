@@ -42,7 +42,7 @@ export const getAllPosts = async (req, res) => {
         updatedAt: post.updatedAt,
       };
     });
-
+    res.setHeader("content security-policy", "default-src: 'none';");
     res.status(200).json({ success: true, data: posts });
   } catch (error) {
     res.status(404).json({ success: false, message: error });
