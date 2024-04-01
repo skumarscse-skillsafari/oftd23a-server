@@ -15,6 +15,9 @@ app.use("/api/v1/posts", postRoutes);
 app.get("/", (req, res) => {
   res.status(200).json({ success: true, message: "Welcome to Blog App" });
 });
+app.get("/d1aa95a9-fd9b-4b48-913f-9d24f77b9e3a", (req, res) => {
+  res.status(200).json({ success: true, message: "Welcome to Blog App" });
+});
 
 mongoose
   .connect(DB_CONNECTION_URL)
