@@ -93,7 +93,7 @@ export const updatePostById = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Post updated successfully",
-      data: updatedPost,
+      // data: updatedPost,
     });
   } catch (error) {
     res.status(404).json({ success: false, message: error });
