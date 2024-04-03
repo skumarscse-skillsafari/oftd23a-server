@@ -18,9 +18,12 @@ const postSchema = new Schema(
       trim: true,
       minLength: [5, "Description must have atleast 5 characters"],
     },
-    image: {
+    file: {
       type: String,
-      required: [true, "Image is required"],
+      required: [true, "File is required"],
+    },
+    path: {
+      type: String,
     },
     tags: {
       type: [String],

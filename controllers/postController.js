@@ -1,11 +1,15 @@
 import Posts from "../models/postModel.js";
+import * as fs from "fs";
 export const createPost = async (req, res) => {
   try {
+    console.log(req.body);
     const { id } = req.params;
     const { tags } = req.body;
     const newPost = await Posts.create({
       author: id,
       ...req.body,
+      file: req.file.originalname,
+      path: req.file.path,
       tags: tags.split(",").map((tag) => tag.trim()),
     });
     if (!newPost)
@@ -36,7 +40,7 @@ export const getAllPosts = async (req, res) => {
         author_id: post.author._id,
         title: post.title,
         description: post.description,
-        image: post.image,
+        file: fs.readFileSync(`./uploads/${post.file}`),
         tags: post.tags,
         createdAt: post.createdAt,
         updatedAt: post.updatedAt,
@@ -58,7 +62,7 @@ export const getPostById = async (req, res) => {
       author: post.author.username,
       title: post.title,
       description: post.description,
-      image: post.image,
+      file: fs.readFileSync(`./uploads/${post.file}`),
       tags: post.tags,
       createdAt: post.createdAt,
       updatedAt: post.updatedAt,

@@ -1,4 +1,5 @@
 import express from "express";
+import upload from "../controllers/multer.js";
 const router = express.Router();
 import auth from "./auth.js";
 import {
@@ -8,8 +9,9 @@ import {
   updatePostById,
   deletePostById,
 } from "../controllers/postController.js";
+
 // createPost
-router.post("/:id", auth, createPost);
+router.post("/:id", auth, upload.single("file"), createPost);
 
 // getAllPosts
 // http://localhost:5000/api/v1/posts
